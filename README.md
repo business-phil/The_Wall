@@ -9,6 +9,6 @@ Assignment: Create a forum-esque wall with login and registration that allows us
 - Delete your own comments and messages
 - Standard registration validations, plus validation for unique user email
 
-### Future Features
+### Future Features:
 - User view page with aggregated message data (# of messages and comments, user most commented on
 - Like/upvote button
