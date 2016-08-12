@@ -11,8 +11,7 @@ bcrypt = Bcrypt(app)
 @app.route('/')
 def index():
 	# Clear session to remove id
-	if 'id' in session:
-		session.clear()
+	session.clear()
 	return render_template('index.html')
 
 @app.route('/wall')
@@ -55,7 +54,7 @@ def register():
 	if len(first_name) < 2:
 		flash("First Name must be at least 2 characters long")
 		errorCheck = True
-	elif match(r'[^a-zA-Z]', str(first_name)):
+	elif search(r'[^a-zA-Z]', str(first_name)):
 		flash("First Name must only contain letters")
 		errorCheck = True
 	# Validate Last Name
@@ -100,6 +99,7 @@ def register():
 				'pw_hash': pw_hash
 				}
 		session['id'] = mysql.query_db(query, data)
+		session['first_name'] = first_name
 		flash("You have successfully registered!")
 		return redirect('/wall')
 
